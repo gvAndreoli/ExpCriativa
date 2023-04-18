@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+header {
+  top: 0;
+  left: 0;
+}
+
+.logo-container {
+  padding: 0px 10px;
+}
+
+.logo {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2.25rem;
+}
+
+#nav-container {
+  display: flex;
+  padding-inline: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nav-container-admin {
+  display: flex;
+  padding-inline: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nav-container nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2px;
+}
+
+#nav-container nav a {
+  padding: 20px 15px;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.form-title {
+  text-align: center;
+}
+
+#login-form {
+  background-color: #c7c7c7;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#btn-login-container {
+  display: flex;
+  justify-content: center;
+}
+
+#register-form {
+  background-color: #c7c7c7;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#btn-register {
+  width: 100%;
+}
+
+#btn-entrar {
+  width: 100%;
+}
+
+#forgotten-pass-link:hover {
+  text-decoration: underline;
+}
+
+#section-animal {
+  background-image: url("../imgs/chris-ensminger-gWo-hfRotrI-unsplash.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 3rem;
+  height: 80vh;
+}
+
+#section-animal h2,
+h4 {
+  color: #fff;
+}
+
+#section-animal h2 {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 4rem;
+}
+
+#section-animal h4 {
+  font-weight: 700;
+  font-style: italic;
+}
+
+#acervo-global-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80%;
+}
+
+#acervo-global-container .card {
+  margin-inline: 10px;
+}
+
+#v-pills-tab {
+  height: 100vh;
+  background-color: gainsboro;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  border-radius: 0px;
+}
+
+.tab-content {
+  width: 80%;
+  height: 100vh;
+}
+
+#tab-especialista-content {
+  height: 100vh;
+  display: flex;
+  gap: 10px;
+}
+
+#tab-especialista-content div button {
+  margin-top: 10px;
+}
+
+.card {
+  padding: 10px;
+}
+
+#menu-title {
+  text-align: center;
+}
