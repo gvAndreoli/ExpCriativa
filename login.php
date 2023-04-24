@@ -1,11 +1,16 @@
 <?php
   session_start();
+  
+  require_once 'conn.php';
 
   $email = $_POST['login-form-email'];
   $senha = $_POST['login-form-password'];
 
-  if ($email == 'root@gmail.com' && $senha == '123') {
-    header('Location: admin.php');
+  $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    header('Location: logged.php');
     unset($_SESSION['nao-autenticado']);
     unset($_SESSION['msg-title']);
     unset($_SESSION['mensagem']);
