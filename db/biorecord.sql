@@ -36,6 +36,8 @@ create table publicacao(
     foreign key (estado_conservacao) references estado_conservacao(id_estado)
 );
 
+alter table publicacao drop column is_global;
+
 insert into tipo_usuario values (1, 'Administrador');
 insert into tipo_usuario values (2, 'Especialista');
 insert into tipo_usuario values (3, 'Usuário comum');
