@@ -14,6 +14,9 @@
 
 <body>
   <header>
+    <?php
+      session_start();
+    ?>
     <div class="logo-container">
       <a href="./index.php">
         <h1 class="logo">BioRecord</h1>
@@ -24,6 +27,7 @@
         <a class="navbar-item is-success" href="./acervo_pessoal.php">Acervo Pessoal</a>
       </nav>
       <div>
+        <a class="button is-info"><strong>Usuário - <?php echo $_SESSION['nomeUsuario'] ?></strong></a>
         <a class="button is-danger">Logout</a>
       </div>
     </div>
