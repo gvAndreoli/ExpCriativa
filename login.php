@@ -18,7 +18,12 @@
     $nomeUsuario = $row['nome'];
     $_SESSION['nomeUsuario'] = $nomeUsuario;
     $_SESSION['tipo_usuario'] = $row['tipo_usuario'];
-    header('Location: ./menu.php');
+    $_SESSION['user_id'] = $row['id_usuario'];
+    if ($_SESSION['tipo_usuario'] == 1) {
+      header('Location: ./admin.php');
+    } else {
+      header('Location: ./menu.php');
+    }
   }
   else {
     $_SESSION['nao-autenticado'] = true;

@@ -27,8 +27,21 @@
         <a class="navbar-item is-success" href="./acervo_pessoal.php">Acervo Pessoal</a>
       </nav>
       <div>
-        <a class="button is-info"><strong>Usuário - <?php echo $_SESSION['nomeUsuario'] ?></strong></a>
-        <a class="button is-danger">Logout</a>
+        <button class="button is-info" style="cursor: default;"><strong>Usuário -
+            <?php echo $_SESSION['nomeUsuario'] ?></strong></button>
+        <button class="button is-info" style="cursor: default;"><strong>Privilégios -
+            <?php
+              if ($_SESSION['tipo_usuario'] == 2) {
+                echo "Especialista";
+              }
+              if ($_SESSION['tipo_usuario'] == 3) {
+                echo "Usuário Comum";
+              }
+              if ($_SESSION['tipo_usuario'] == 1) {
+                echo "Administrador";
+              }
+            ?></strong></button>
+        <a class="button is-danger" href="./logout.php">Logout</a>
       </div>
     </div>
   </header>

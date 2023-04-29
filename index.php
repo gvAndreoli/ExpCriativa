@@ -80,10 +80,10 @@
           <div class="modal-content">
             <div class="box">
               <h2 class="form-title">Cadastro</h2>
-              <form action="" class="form box">
+              <form action="./cadastro.php" class="form box" method="post">
                 <div class="field">
                   <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" placeholder="Nome" />
+                    <input class="input" type="text" placeholder="Nome" name="nome_cadastro" />
                     <span class="icon is-small is-left">
                       <i class="fa fa-user"></i>
                     </span>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email" />
+                    <input class="input" type="email" placeholder="Email" name="email_cadastro" />
                     <span class="icon is-small is-left">
                       <i class="fa fa-envelope-o"></i>
                     </span>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Senha" />
+                    <input class="input" type="password" placeholder="Senha" name="senha_cadastro" />
                     <span class="icon is-small is-left">
                       <i class="fa fa-lock"></i>
                     </span>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Confirme a senha" />
+                    <input class="input" type="password" placeholder="Confirme a senha" name="senha_conf_cadastro" />
                     <span class="icon is-small is-left">
                       <i class="fa fa-check"></i>
                     </span>
@@ -150,6 +150,28 @@
     </script>
     <?php
       unset($_SESSION['nao-autenticado']);
+      }
+    ?>
+
+    <!--MODAL DE SUCESSO-->
+    <?php 
+      if (isset($_SESSION['sucesso_cadastro']) && $_SESSION['sucesso_cadastro'] == true){
+        echo '<div class="modal" id="success-modal">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                  <div class="notification is-success">'.
+                  '<h4 class="title is-4">Usuário cadastrado com sucesso!</h4> 
+                    Você já pode fazer login
+                  </div>
+                </div>
+                <button class="modal-close is-large" aria-label="close"></button>
+              </div>';
+    ?>
+    <script>
+    const success_notification_modal = document.getElementById('success-modal').classList.add('is-active')
+    </script>
+    <?php
+      unset($_SESSION['sucesso_cadastro']);
       }
     ?>
 
