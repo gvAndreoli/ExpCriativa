@@ -6,10 +6,12 @@
   $email = $_POST['email'];
   $lattes = $_POST['lattes'];
   $senha = $_POST['senha'];
-  $tipo_usuario = 2;
+  $tipo_usuario = 2; // usuario especialista
   
+  // adição no bd
   $sql = "INSERT INTO usuario (nome, email, senha, lattes, tipo_usuario) VALUES ('$nome', '$email', '$senha', '$lattes', '$tipo_usuario')";
 
+  // mandar msg de acordo com o resultado da operação no bd
   if ($result = $conn->query($sql)) {
     $msg = "Registro cadastrado com sucesso! Você já pode realizar login.";
   } else {

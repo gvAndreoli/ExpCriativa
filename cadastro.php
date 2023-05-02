@@ -2,11 +2,11 @@
   session_start();
   require('./db/conn.php');
 
-  $nome = $_POST['nome_cadastro'];
-  $email = $_POST['email_cadastro'];
-  $senha = $_POST['senha_cadastro'];
+  $nome = $_POST['nome'];
+  $email = $_POST['email'];
+  $senha = $_POST['senha'];
   $lattes = null;
-  $confirmacao_senha = $_POST['senha_conf_cadastro'];
+  $confirmacao_senha = $_POST['senha_conf'];
   $tipo_usuario = 3; // Usuário Comum
 
   $sql_verificar_registros = "SELECT email FROM usuario WHERE email = '$email'";
@@ -29,12 +29,12 @@
     } else {
       // Caso de erro
       $_SESSION['nao-autenticado'] = true;
-      $_SESSION['msg-title']= "Erro de cadastro";
+      $_SESSION['msg-title']= "Erro de cadastro, tente novamente";
       $_SESSION['mensagem'] = "Não foi possivel salvar seus dados! Tente Novamente.";
     }
   }
 
-  header('Location: ./index.php');
+  header('Location: ./menu.php');
 
 
 ?>
