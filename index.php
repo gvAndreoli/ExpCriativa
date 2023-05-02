@@ -83,7 +83,7 @@
               <form action="./cadastro.php" class="form box" method="post">
                 <div class="field">
                   <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" placeholder="Nome" name="nome" />
+                    <input class="input" type="text" placeholder="Nome" name="nomeC" />
                     <span class="icon is-small is-left">
                       <i class="fa fa-user"></i>
                     </span>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email" name="email" />
+                    <input class="input" type="email" placeholder="Email" name="emailC" />
                     <span class="icon is-small is-left">
                       <i class="fa fa-envelope-o"></i>
                     </span>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Senha" name="senha" />
+                    <input class="input" type="password" placeholder="Senha" name="senhaC" />
                     <span class="icon is-small is-left">
                       <i class="fa fa-lock"></i>
                     </span>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Confirme a senha" name="senha_conf" />
+                    <input class="input" type="password" placeholder="Confirme a senha" name="senha_confC" />
                     <span class="icon is-small is-left">
                       <i class="fa fa-check"></i>
                     </span>

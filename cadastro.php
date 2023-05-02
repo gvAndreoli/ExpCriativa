@@ -2,11 +2,11 @@
   session_start();
   require('./db/conn.php');
 
-  $nome = $_POST['nome'];
-  $email = $_POST['email'];
-  $senha = $_POST['senha'];
+  $nome = $_POST['nomeC'];
+  $email = $_POST['emailC'];
+  $senha = $_POST['senhaC'];
   $lattes = null;
-  $confirmacao_senha = $_POST['senha_conf'];
+  $confirmacao_senha = $_POST['senha_confC'];
   $tipo_usuario = 3; // Usuário Comum
 
   // ver se o usuario ja existe
