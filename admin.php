@@ -74,7 +74,7 @@
                           echo "<td>" . $row['id_usuario'] . "</td>";
                           echo "<td>" . $row['nome'] . "</td>";
                           echo "<td>" . $row['email'] . "</td>";
-                          echo "<td>" . $row['lattes'] . "</td>";
+                          echo "<td><a class='button is-link is-light' target='blank' href='" . $row['lattes'] . "'</a>". $row['lattes'] ."</td>";
                           echo '<td><a class="button is-info" href="especialistaAtualizar.php?id='. $row['id_usuario'].'">Editar</a> <a class="button is-danger" href="especialistaExcluir.php?id='. $row['id_usuario'].'">Excluir</a></td>';
                           echo '</tr>';
                         }
