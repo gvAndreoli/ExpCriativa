@@ -37,13 +37,13 @@
       <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <button class="button is-warning active" id="v-pills-home-tab" data-bs-toggle="pill"
-            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
+            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="false">
             Especialistas
           </button>
           <button class="button is-warning" id="v-pills-profile-tab" data-bs-toggle="pill"
             data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
             aria-selected="false">
-            Publicações
+            Usuários comuns
           </button>
         </div>
         <!--CONTEUDO DAS TABS-->
@@ -155,7 +155,43 @@
           </div>
           <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
             tabindex="0">
-            <p>teste</p>
+            <table class="table">
+              <thead>
+                <th>id</th>
+                <th>nome</th>
+                <th>e-mail</th>
+                <th>Ações</th>
+              </thead>
+              <tbody>
+                <?php
+                    // Selecionando a tabela que deseja ler os dados
+                    $sql = "SELECT * FROM usuario where tipo_usuario = 3";
+
+                    // Executando a consulta SQL
+                    $resultado = $conn->query($sql);
+
+                    // Verificando se a consulta retornou algum resultado
+                      if ($resultado->num_rows > 0) {
+                        while ($row = $resultado->fetch_assoc()) {
+                          echo "<tr>";
+                          echo "<td>" . $row['id_usuario'] . "</td>";
+                          echo "<td>" . $row['nome'] . "</td>";
+                          echo "<td>" . $row['email'] . "</td>";
+                          echo '<td><a class="button is-info" href="usuariocomumAtualizar.php?id='. $row['id_usuario'].'">Editar</a> <a class="button is-danger" href="usuariocomumExcluir.php?id='. $row['id_usuario'].'">Excluir</a></td>';
+                          echo '</tr>';
+                        }
+                      }
+                      else {
+                        echo "<tr>";
+                        echo "<td>" . "Sem Resultados" . "</td>";
+                        echo "<td>" . "Sem Resultados" . "</td>";
+                        echo "<td>" . "Sem Resultados" . "</td>";
+                        echo "<td>" . "--------------" . "</td>";
+                        echo "</tr>";
+                    }
+                  ?>
+              </tbody>
+            </table>
           </div>
         </div>
     </section>

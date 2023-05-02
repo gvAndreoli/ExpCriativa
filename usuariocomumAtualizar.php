@@ -44,12 +44,11 @@
             $nome = $row['nome'];
             $email = $row['email'];
             $senha = $row['senha'];
-            $lattes = $row['lattes'];
           }
         }
       ?>
       <div class="container">
-        <form action="./usuariocomumAtualizar_exe.php" id="register-form" method="post">
+        <form action="./especialistaAtualizar_exe.php" id="register-form" method="post">
           <div class="field">
             <input type="hidden" value="<?php echo $id?>" name="id"></input>
             <p class="control has-icons-left has-icons-right">
@@ -72,14 +71,6 @@
               <input class="input" type="password" placeholder="Senha" value="<?php echo $senha?>" name="senha" />
               <span class=" icon is-small is-left">
                 <i class="fa fa-lock"></i>
-              </span>
-            </p>
-          </div>
-          <div class="field">
-            <p class="control has-icons-left">
-              <input class="input" type="text" placeholder="Lattes" value="<?php echo $lattes?>" name="lattes">
-              <span class=" icon is-small is-left">
-                <i class="fa fa-link"></i>
               </span>
             </p>
           </div>

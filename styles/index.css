@@ -114,6 +114,17 @@ h4 {
   margin-inline: 10px;
 }
 
+#acervo-pessoal-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80%;
+  justify-content: center;
+}
+
+#acervo-pessoal-container .card {
+  margin-inline: 10px;
+}
+
 #v-pills-tab {
   height: 100vh;
   background-color: gainsboro;

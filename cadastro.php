@@ -34,8 +34,6 @@
       $_SESSION['mensagem'] = "Não foi possivel salvar seus dados! Tente Novamente.";
     }
   }
-
-  header('Location: ./menu.php');
-
+  header('Location: ./index.php');
 
 ?>
