@@ -31,6 +31,8 @@ create table estado_conservacao(
     descricao varchar(100)
 );
 
+ALTER TABLE estado_conservacao MODIFY descricao VARCHAR(100) NOT NULL;
+
 insert into estado_conservacao values (1, "Não ameaçado");
 
 create table publicacao(
