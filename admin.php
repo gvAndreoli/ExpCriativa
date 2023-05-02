@@ -121,7 +121,8 @@
                           </div>
                           <div class="field">
                             <p class="control has-icons-left">
-                              <input class="input" type="text" placeholder="Lattes" name="lattes" />
+                              <input class="input" type="text" placeholder="Lattes" name="lattes" pattern="https?://.+"
+                                title="Por favor, insira um link válido!" />
                               <span class="icon is-small is-left">
                                 <i class="fa fa-link"></i>
                               </span>
