@@ -9,6 +9,7 @@
   $confirmacao_senha = $_POST['senha_conf'];
   $tipo_usuario = 3; // Usuário Comum
 
+  // ver se o usuario ja existe
   $sql_verificar_registros = "SELECT email FROM usuario WHERE email = '$email'";
   $result_verificacao = mysqli_query($conn, $sql_verificar_registros);
 
