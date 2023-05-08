@@ -53,7 +53,8 @@
           <div class="field">
             <input type="hidden" value="<?php echo $id?>" name="id"></input>
             <p class="control has-icons-left has-icons-right">
-              <input class="input" type="text" placeholder="Nome" value="<?php echo $nome ?>" name="nome" />
+              <input class="input" type="text" placeholder="Nome" value="<?php echo $nome ?>" name="nome" required
+                pattern=".{4,}" title="Por favor, insira pelo menos 4 caracteres" />
               <span class="icon is-small is-left">
                 <i class="fa fa-user"></i>
               </span>
@@ -61,7 +62,9 @@
           </div>
           <div class="field">
             <p class="control has-icons-left has-icons-right">
-              <input class="input" type="email" placeholder="Email" value="<?php echo $email?>" name="email">
+              <input class="input" type="email" placeholder="Email" value="<?php echo $email?>" name="email"
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required
+                title="Por favor, insira um e-mail válido!">
               <span class=" icon is-small is-left">
                 <i class="fa fa-envelope-o"></i>
               </span>
@@ -69,7 +72,8 @@
           </div>
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="password" placeholder="Senha" value="<?php echo $senha?>" name="senha" />
+              <input class="input" type="password" placeholder="Senha" value="<?php echo $senha?>" name="senha" required
+                pattern=".{4,}" title="Por favor, insira pelo menos 4 caracteres" />
               <span class=" icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>
@@ -77,7 +81,8 @@
           </div>
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="text" placeholder="Lattes" value="<?php echo $lattes?>" name="lattes">
+              <input class="input" type="text" placeholder="Lattes" value="<?php echo $lattes?>" name="lattes"
+                pattern="https?://.+" title="Por favor, insira um link válido!" required>
               <span class=" icon is-small is-left">
                 <i class="fa fa-link"></i>
               </span>

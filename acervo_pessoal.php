@@ -105,17 +105,20 @@
               <form action="" id="register-form" method="post">
                 <div class="field">
                   <p class="control">
-                    <input class="input" type="text" placeholder="Nome da espécie" name="nome_especie" />
+                    <input class="input" type="text" placeholder="Nome da espécie" name="nome_especie" required
+                      pattern=".{4,}" title="Por favor, insira pelo menos 4 caracteres" />
                   </p>
                 </div>
                 <div class="field">
                   <p class="control">
-                    <input class="input" type="text" placeholder="Nome científico da espécie" name="nome_cientifico" />
+                    <input class="input" type="text" placeholder="Nome científico da espécie" name="nome_cientifico"
+                      required pattern=".{4,}" title="Por favor, insira pelo menos 4 caracteres" />
                   </p>
                 </div>
                 <div class="field">
                   <p class="control">
-                    <input class="input" type="text" placeholder="Nível trófico" name="nivel_trofico" />
+                    <input class="input" type="text" placeholder="Nível trófico" name="nivel_trofico" required
+                      pattern=".{4,}" title="Por favor, insira pelo menos 4 caracteres" />
                   </p>
                 </div>
                 <div class="field">
@@ -126,7 +129,8 @@
                 <label>Escolha uma imagem: </label><br>
                 <div class="file">
                   <label class="file-label">
-                    <input class="file-input" type="file" name="especie_img">
+                    <input class="file-input" type="file" name="especie_img" required
+                      title="Por favor, insira uma imagem!">
                     <span class="file-cta">
                       <span class="file-icon">
                         <i class="fa fa-upload"></i>

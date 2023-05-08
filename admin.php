@@ -105,7 +105,8 @@
                         <form action="./cad_especialista.php" id="register-form" method="post">
                           <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                              <input class="input" type="text" placeholder="Nome" name="nome" />
+                              <input class="input" type="text" placeholder="Nome" name="nome" required pattern=".{4,}"
+                                title="Por favor, insira pelo menos 4 caracteres" />
                               <span class="icon is-small is-left">
                                 <i class="fa fa-user"></i>
                               </span>
@@ -113,7 +114,9 @@
                           </div>
                           <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                              <input class="input" type="email" placeholder="Email" name="email" />
+                              <input class="input" type="email" placeholder="Email" name="email"
+                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required
+                                title="Por favor, insira um e-mail válido!" />
                               <span class="icon is-small is-left">
                                 <i class="fa fa-envelope-o"></i>
                               </span>
@@ -122,7 +125,7 @@
                           <div class="field">
                             <p class="control has-icons-left">
                               <input class="input" type="text" placeholder="Lattes" name="lattes" pattern="https?://.+"
-                                title="Por favor, insira um link válido!" />
+                                title="Por favor, insira um link válido!" required />
                               <span class="icon is-small is-left">
                                 <i class="fa fa-link"></i>
                               </span>
@@ -130,7 +133,8 @@
                           </div>
                           <div class="field">
                             <p class="control has-icons-left">
-                              <input class="input" type="password" placeholder="Senha" name="senha" />
+                              <input class="input" type="password" placeholder="Senha" name="senha" required
+                                pattern=".{4,}" title="Por favor, insira pelo menos 4 caracteres" />
                               <span class="icon is-small is-left">
                                 <i class="fa fa-lock"></i>
                               </span>
