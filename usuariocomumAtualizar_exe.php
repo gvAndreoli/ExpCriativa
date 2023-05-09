@@ -6,19 +6,27 @@
   $nome = $_POST['nome'];
   $email = $_POST['email'];
   $senha = $_POST['senha'];
+  $senhaC = $_POST['senhaC'];
   $tipo_usuario = 3;
-  
-  $sql = "UPDATE usuario SET nome = '$nome', email = '$email', senha='$senha' where id_usuario = $id";
 
-  if ($conn->query($sql) == TRUE) {
-    unset($_SESSION['nao-autenticado']);
-    unset($_SESSION['msg-title']);
-    unset($_SESSION['mensagem']);
+  if ($senha == $senhaC) {
+    $sql = "UPDATE usuario SET nome = '$nome', email = '$email', senha='$senha' where id_usuario = $id";
+
+    if ($conn->query($sql) == TRUE) {
+      unset($_SESSION['nao-autenticado']);
+      unset($_SESSION['msg-title']);
+      unset($_SESSION['mensagem']);
+    } else {
+      $_SESSION['nao-autenticado'] = true;
+      $_SESSION['msg-title']= "Erro de atualização";
+      $_SESSION['mensagem'] = "Falha ao atualizar usuário.";
+    }
   } else {
     $_SESSION['nao-autenticado'] = true;
-    $_SESSION['msg-title']= "Erro de cadastro";
-    $_SESSION['mensagem'] = "Falha ao atuWalizar usuário.";
+    $_SESSION['msg-title']= "Erro de atualização";
+    $_SESSION['mensagem'] = "Falha ao atualizar usuário. Senhas não conferem";
   }
+
 
   header('Location: ./admin.php');
 ?>

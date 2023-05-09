@@ -15,14 +15,10 @@
 <body>
   <header>
     <?php
-      session_start();
-    ?>
-    <?php
-    if ($_SESSION['tipo_usuario'] == 1) {
-      unset($_SESSION['not-authenticated']); 
-    } else {
+    session_start();
+    if (!isset($_SESSION['login'])) {
       header('Location: ./index.php');
-      $_SESSION['not-authenticated'] = true;
+      $_SESSION['not-authenticated'] = true; 
     }
     ?>
     <div class="logo-container">

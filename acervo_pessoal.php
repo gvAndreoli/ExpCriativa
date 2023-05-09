@@ -18,11 +18,9 @@
     require('./db/conn.php');
   ?>
   <?php
-  if ($_SESSION['tipo_usuario'] == 1) {
-    unset($_SESSION['not-authenticated']); 
-  } else {
+  if (!isset($_SESSION['login'])) {
     header('Location: ./index.php');
-    $_SESSION['not-authenticated'] = true;
+    $_SESSION['not-authenticated'] = true; 
   }
   ?>
   <header>
@@ -50,7 +48,7 @@
               echo "Administrador";
             }
           ?></strong></button>
-        <a class="button is-danger">Logout</a>
+        <a class="button is-danger" href="./logout.php">Logout</a>
         <button type="button" class="button is-warning js-modal-trigger" data-target="modal-js-cadastro">
           Cadastrar espécie
         </button>

@@ -48,7 +48,7 @@
         }
       ?>
       <div class="container">
-        <form action="./especialistaAtualizar_exe.php" id="register-form" method="post">
+        <form action="./usuariocomumAtualizar_exe.php" id="register-form" method="post">
           <div class="field">
             <input type="hidden" value="<?php echo $id?>" name="id"></input>
             <p class="control has-icons-left has-icons-right">
@@ -73,6 +73,16 @@
             <p class="control has-icons-left">
               <input class="input" type="password" placeholder="Senha" value="<?php echo $senha?>" name="senha" required
                 pattern=".{4,}" title="Por favor, insira pelo menos 4 caracteres" />
+              <span class=" icon is-small is-left">
+                <i class="fa fa-lock"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="password" name="senhaC" placeholder="Confirme a senha"
+                value="<?php echo $senha?>" name="senha" required pattern=".{4,}"
+                title="Por favor, insira pelo menos 4 caracteres" />
               <span class=" icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>

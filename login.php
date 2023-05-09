@@ -19,6 +19,7 @@
     $_SESSION['nomeUsuario'] = $nomeUsuario;
     $_SESSION['tipo_usuario'] = $row['tipo_usuario'];
     $_SESSION['user_id'] = $row['id_usuario'];
+    $_SESSION['login'] = true;
     if ($_SESSION['tipo_usuario'] == 1) {
       header('Location: ./admin.php');
     } else {
