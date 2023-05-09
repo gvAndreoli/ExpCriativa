@@ -17,6 +17,14 @@
     <?php
       session_start();
     ?>
+    <?php
+    if ($_SESSION['tipo_usuario'] == 1) {
+      unset($_SESSION['not-authenticated']); 
+    } else {
+      header('Location: ./index.php');
+      $_SESSION['not-authenticated'] = true;
+    }
+    ?>
     <div class="logo-container">
       <a href="./index.php">
         <h1 class="logo">BioRecord</h1>

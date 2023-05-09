@@ -4,12 +4,20 @@
   session_start();
   require('./db/conn.php');
 ?>
+<?php
+if ($_SESSION['tipo_usuario'] == 1) {
+  unset($_SESSION['not-authenticated']); 
+} else {
+  header('Location: ./index.php');
+  $_SESSION['not-authenticated'] = true;
+}
+?>
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BioRecord - Administrador</title>
+  <title>BioRecord - Administrador - <?php echo $_SESSION['user_id'] ?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
@@ -26,7 +34,7 @@
       </a>
     </div>
     <div id="nav-container-admin" class="navbar is-success">
-      <p>Administrador(a): nome</p>
+      <p>Administrador(a): <?php echo $_SESSION['nomeUsuario']?></p>
       <div>
         <a class="button is-danger">Logout</a>
       </div>
@@ -37,13 +45,13 @@
       <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <button class="button is-warning active" id="v-pills-home-tab" data-bs-toggle="pill"
-            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
+            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="false">
             Especialistas
           </button>
           <button class="button is-warning" id="v-pills-profile-tab" data-bs-toggle="pill"
             data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
             aria-selected="false">
-            Publicações
+            Usuários comuns
           </button>
         </div>
         <!--CONTEUDO DAS TABS-->
@@ -74,7 +82,7 @@
                           echo "<td>" . $row['id_usuario'] . "</td>";
                           echo "<td>" . $row['nome'] . "</td>";
                           echo "<td>" . $row['email'] . "</td>";
-                          echo "<td>" . $row['lattes'] . "</td>";
+                          echo "<td><a class='button is-link is-light' target='blank' href='" . $row['lattes'] . "'</a>". $row['lattes'] ."</td>";
                           echo '<td><a class="button is-info" href="especialistaAtualizar.php?id='. $row['id_usuario'].'">Editar</a> <a class="button is-danger" href="especialistaExcluir.php?id='. $row['id_usuario'].'">Excluir</a></td>';
                           echo '</tr>';
                         }
@@ -105,7 +113,8 @@
                         <form action="./cad_especialista.php" id="register-form" method="post">
                           <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                              <input class="input" type="text" placeholder="Nome" name="nome" />
+                              <input class="input" type="text" placeholder="Nome" name="nome" required pattern=".{4,}"
+                                title="Por favor, insira pelo menos 4 caracteres" />
                               <span class="icon is-small is-left">
                                 <i class="fa fa-user"></i>
                               </span>
@@ -113,7 +122,9 @@
                           </div>
                           <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                              <input class="input" type="email" placeholder="Email" name="email" />
+                              <input class="input" type="email" placeholder="Email" name="email"
+                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required
+                                title="Por favor, insira um e-mail válido!" />
                               <span class="icon is-small is-left">
                                 <i class="fa fa-envelope-o"></i>
                               </span>
@@ -121,7 +132,8 @@
                           </div>
                           <div class="field">
                             <p class="control has-icons-left">
-                              <input class="input" type="text" placeholder="Lattes" name="lattes" />
+                              <input class="input" type="text" placeholder="Lattes" name="lattes" pattern="https?://.+"
+                                title="Por favor, insira um link válido!" required />
                               <span class="icon is-small is-left">
                                 <i class="fa fa-link"></i>
                               </span>
@@ -129,7 +141,8 @@
                           </div>
                           <div class="field">
                             <p class="control has-icons-left">
-                              <input class="input" type="password" placeholder="Senha" name="senha" />
+                              <input class="input" type="password" placeholder="Senha" name="senha" required
+                                pattern=".{4,}" title="Por favor, insira pelo menos 4 caracteres" />
                               <span class="icon is-small is-left">
                                 <i class="fa fa-lock"></i>
                               </span>
@@ -155,7 +168,43 @@
           </div>
           <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
             tabindex="0">
-            <p>teste</p>
+            <table class="table">
+              <thead>
+                <th>id</th>
+                <th>nome</th>
+                <th>e-mail</th>
+                <th>Ações</th>
+              </thead>
+              <tbody>
+                <?php
+                    // Selecionando a tabela que deseja ler os dados
+                    $sql = "SELECT * FROM usuario where tipo_usuario = 3";
+
+                    // Executando a consulta SQL
+                    $resultado = $conn->query($sql);
+
+                    // Verificando se a consulta retornou algum resultado
+                      if ($resultado->num_rows > 0) {
+                        while ($row = $resultado->fetch_assoc()) {
+                          echo "<tr>";
+                          echo "<td>" . $row['id_usuario'] . "</td>";
+                          echo "<td>" . $row['nome'] . "</td>";
+                          echo "<td>" . $row['email'] . "</td>";
+                          echo '<td><a class="button is-info" href="usuariocomumAtualizar.php?id='. $row['id_usuario'].'">Editar</a> <a class="button is-danger" href="usuariocomumExcluir.php?id='. $row['id_usuario'].'">Excluir</a></td>';
+                          echo '</tr>';
+                        }
+                      }
+                      else {
+                        echo "<tr>";
+                        echo "<td>" . "Sem Resultados" . "</td>";
+                        echo "<td>" . "Sem Resultados" . "</td>";
+                        echo "<td>" . "Sem Resultados" . "</td>";
+                        echo "<td>" . "--------------" . "</td>";
+                        echo "</tr>";
+                    }
+                  ?>
+              </tbody>
+            </table>
           </div>
         </div>
     </section>

@@ -2,6 +2,10 @@
 <html>
 <?php
   session_start();
+  if(isset($_SESSION['not-authenticated'])){
+    echo "<script>alert('Acesso negado!')</script>";
+    unset($_SESSION['not-authenticated']);
+  }
 ?>
 
 <head>
@@ -43,7 +47,9 @@
               <form action="./login.php" method="post" class="box form">
                 <div class="field">
                   <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email" name="login-form-email" />
+                    <input class="input" type="email" placeholder="Email" name="login-form-email" name="emailC"
+                      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required
+                      title="Por favor, insira um e-mail válido!" />
                     <span class="icon is-small is-left">
                       <i class="fa fa-envelope-o"></i>
                     </span>
@@ -83,7 +89,8 @@
               <form action="./cadastro.php" class="form box" method="post">
                 <div class="field">
                   <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" placeholder="Nome" name="nomeC" />
+                    <input class="input" type="text" placeholder="Nome" name="nomeC" pattern=".{4,}"
+                      title="Por favor, insira pelo menos 4 caracteres" required />
                     <span class="icon is-small is-left">
                       <i class="fa fa-user"></i>
                     </span>
@@ -91,7 +98,9 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email" name="emailC" />
+                    <input class="input" type="email" placeholder="Email" name="emailC"
+                      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required
+                      title="Por favor, insira um e-mail válido!" />
                     <span class="icon is-small is-left">
                       <i class="fa fa-envelope-o"></i>
                     </span>
@@ -99,7 +108,8 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Senha" name="senhaC" />
+                    <input class="input" type="password" placeholder="Senha" name="senhaC" pattern=".{4,}"
+                      title="Por favor, insira pelo menos 4 caracteres" required />
                     <span class="icon is-small is-left">
                       <i class="fa fa-lock"></i>
                     </span>
@@ -107,7 +117,8 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Confirme a senha" name="senha_confC" />
+                    <input class="input" type="password" placeholder="Confirme a senha" name="senha_confC"
+                      pattern=".{4,}" title="Por favor, insira pelo menos 4 caracteres" required />
                     <span class="icon is-small is-left">
                       <i class="fa fa-check"></i>
                     </span>
