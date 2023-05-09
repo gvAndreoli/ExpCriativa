@@ -4,12 +4,20 @@
   session_start();
   require('./db/conn.php');
 ?>
+<?php
+if ($_SESSION['tipo_usuario'] == 1) {
+  unset($_SESSION['not-authenticated']); 
+} else {
+  header('Location: ./index.php');
+  $_SESSION['not-authenticated'] = true;
+}
+?>
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BioRecord - Administrador</title>
+  <title>BioRecord - Administrador - <?php echo $_SESSION['user_id'] ?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
@@ -26,7 +34,7 @@
       </a>
     </div>
     <div id="nav-container-admin" class="navbar is-success">
-      <p>Administrador(a): nome</p>
+      <p>Administrador(a): <?php echo $_SESSION['nomeUsuario']?></p>
       <div>
         <a class="button is-danger">Logout</a>
       </div>

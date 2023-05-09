@@ -2,6 +2,10 @@
 <html>
 <?php
   session_start();
+  if(isset($_SESSION['not-authenticated'])){
+    echo "<script>alert('Acesso negado!')</script>";
+    unset($_SESSION['not-authenticated']);
+  }
 ?>
 
 <head>

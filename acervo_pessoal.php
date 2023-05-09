@@ -17,6 +17,14 @@
     session_start();
     require('./db/conn.php');
   ?>
+  <?php
+  if ($_SESSION['tipo_usuario'] == 1) {
+    unset($_SESSION['not-authenticated']); 
+  } else {
+    header('Location: ./index.php');
+    $_SESSION['not-authenticated'] = true;
+  }
+  ?>
   <header>
     <div class="logo-container">
       <a href="#">
