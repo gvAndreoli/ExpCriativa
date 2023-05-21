@@ -90,8 +90,9 @@
           </p>
         </div>
         <br>
-        <a class="button is-info">Editar</a>
-        <a class="button is-danger">Excluir</a>
+        <a class="button is-info" href="acervo_pessoal_editar.php?id=<?php echo $row['id_publicacao']; ?>">Editar</a>
+        <a class="button is-danger"
+          href="acervo_pessoal_excluir.php?id=<?php echo $row['id_publicacao']; ?>">Excluir</a>
       </div>
       <?php
           }
@@ -108,7 +109,7 @@
           <div class="modal-content">
             <div class="box">
               <h2 class="form-title">Cadastro de Espécie</h2>
-              <form action="" id="register-form" method="post">
+              <form id="register-form" method="post" action="./cad_acervo_pessoal.php" enctype="multipart/form-data">
                 <div class="field">
                   <p class="control">
                     <input class="input" type="text" placeholder="Nome da espécie" name="nome_especie" required
@@ -128,15 +129,23 @@
                   </p>
                 </div>
                 <div class="field">
-                  <p class="control">
-                    <input class="input" type="text" placeholder="Estado de conservação" name="estado_conservacao" />
-                  </p>
+                  <label for="estado_conservacao">Estado de conservação: </label>
+                  <select name="estado_conservacao">
+                    <?php
+                    $sql = "SELECT * FROM estado_conservacao";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                      while ($row = $result->fetch_assoc()) {
+                        echo '<option value="' . $row['id_estado'] . '">' . $row['descricao'] . '</option>';
+                      }
+                    }
+                  ?>
+                  </select>
                 </div>
                 <label>Escolha uma imagem: </label><br>
                 <div class="file">
                   <label class="file-label">
-                    <input class="file-input" type="file" name="especie_img" required
-                      title="Por favor, insira uma imagem!">
+                    <input class="file-input" type="file" name="imagem" required title="Por favor, insira uma imagem!">
                     <span class="file-cta">
                       <span class="file-icon">
                         <i class="fa fa-upload"></i>

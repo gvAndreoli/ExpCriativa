@@ -1,1 +1,10 @@
 --- ARQUIVO DESTINADO PARA OBSERVACOES PERTINENTES AO PROJETO ---
+-- Lógica para exibir publicações globais
+consulta = select * from publicacoes
+while (publicacao > 0)
+	consulta_usuario = select * from usuario where id_usuario='id_autor'
+	if (resultado(consulta_usuario) > 0){
+		if(resultado_usuario[tipo_usuario] == 2) {
+			echo publicacao
+	}
+  }
