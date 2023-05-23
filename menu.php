@@ -30,6 +30,11 @@
     <div id="nav-container" class="navbar is-success">
       <nav>
         <a class="navbar-item is-success" href="./acervo_pessoal.php">Acervo Pessoal</a>
+        <?php
+        if ($_SESSION['tipo_usuario'] == 1) {
+          echo '<a class="navbar-item is-success" href="./admin.php">Painel administrativo</a>';
+        }
+        ?>
       </nav>
       <div>
         <button class="button is-info" style="cursor: default;"><strong>Usuário -

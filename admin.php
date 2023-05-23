@@ -3,11 +3,11 @@
 <?php
   session_start();
   require('./db/conn.php');
-  if (!isset($_SESSION['login'])) {
+  if ((!isset($_SESSION['login']))) {
     header('Location: ./index.php');
     $_SESSION['not-authenticated'] = true; 
   }
-  if (isset($_SESSION['login']) && $_SESSION['tipo_usuario'] !== 1) {
+  if ($_SESSION['tipo_usuario'] != 1) {
     header('Location: ./menu.php');
   }
   ?>
