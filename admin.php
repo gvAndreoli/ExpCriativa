@@ -32,6 +32,7 @@
     <div id="nav-container-admin" class="navbar is-success">
       <p>Administrador(a):<?php echo $_SESSION['nomeUsuario']?></p>
       <div>
+        <a class="button is-info" href="./menu.php">Acervo Global</a>
         <a class="button is-danger" href="./logout.php">Logout</a>
       </div>
     </div>
