@@ -29,7 +29,7 @@
     </div>
   </header>
   <main>
-    <h1 id="menu-title">Editar Usuário</h1>
+    <h1 id="menu-title">Editar Publicação</h1>
     <br />
     <section>
       <?php
@@ -89,7 +89,8 @@
           <label>Escolha uma imagem: </label><br>
           <div class="file">
             <label class="file-label">
-              <input class="file-input" type="file" name="imagem" title="Por favor, insira uma imagem!">
+              <input class="file-input" type="file" name="imagens[]" multiple="multiple"
+                title="Por favor, insira uma imagem!">
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fa fa-upload"></i>

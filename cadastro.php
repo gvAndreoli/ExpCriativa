@@ -37,7 +37,7 @@
     }
   } else {
     $_SESSION['nao-autenticado'] = true;
-    $_SESSION['msg-title']= "Erro de atualização";
+    $_SESSION['msg-title']= "Erro de cadastro";
     $_SESSION['mensagem'] = "Falha ao cadastrar usuário. Senhas não conferem";
   }
   header('Location: ./index.php');

@@ -157,3 +157,11 @@ h4 {
 #menu-title {
   text-align: center;
 }
+
+.card {
+  max-width: 500px;
+}
+
+.card .carousel-item {
+  height: 40vh;
+}

@@ -5,6 +5,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BIORECORD</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="shortcut icon" href="./imgs/plant_nature_leaves_leaf_dirt_earth_icon_141982.svg" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -68,6 +70,7 @@
         if (mysqli_num_rows($resultado) > 0) {
           // Exiba cada imagem em uma tag HTML <img>
           while ($row = mysqli_fetch_assoc($resultado)) {
+            $imagens = json_decode($row['url_imagem'], true);
             $id_estado = $row['estado_conservacao'];
             $estado_cons = "SELECT * FROM estado_conservacao where id_estado='$id_estado'";
             $result_estado = $conn->query($estado_cons);
@@ -75,8 +78,34 @@
               $row_estado = $result_estado->fetch_assoc();
             }
         ?> <br>
-      <div class="card w-100 mb-3" style="width: 18rem">
-        <img src="<?php echo $row['url_imagem'] ?>" style="height: 40vh;" class="card-img-top">
+      <div class="card w-50 mb-3" style="width: 18rem">
+        <?php
+          echo '<div id="carousel-' . $row['id_publicacao'] . '" class="carousel slide" data-bs-ride="carousel">';
+          echo '<div class="carousel-inner">';
+
+          // Loop para construir os slides do carrossel
+          foreach ($imagens as $index => $imagem) {
+            $activeClass = ($index === 0) ? 'active' : ''; // Se for a primeira imagem da lista, ela que será a ativa do modal
+
+            echo '<div class="carousel-item ' . $activeClass . '">';
+            echo '<img src="' . $imagem . '" class="d-block w-100" alt="Imagem ' . ($index + 1) . '">';
+            echo '</div>';
+          }
+
+          echo '</div>';
+
+          // Exibe os controles de navegação do carrossel
+          echo '<button class="carousel-control-prev" type="button" data-bs-target="#carousel-' . $row['id_publicacao'] . '" data-bs-slide="prev">';
+          echo '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
+          echo '<span class="visually-hidden">Previous</span>';
+          echo '</button>';
+          echo '<button class="carousel-control-next" type="button" data-bs-target="#carousel-' . $row['id_publicacao'] . '" data-bs-slide="next">';
+          echo '<span class="carousel-control-next-icon" aria-hidden="true"></span>';
+          echo '<span class="visually-hidden">Next</span>';
+          echo '</button>';
+
+          echo '</div>';
+        ?>
         <div class="card-body">
           <h5 class="card-title"><strong> <?php echo $row['nome_especie'] ?></strong></h5>
           <p class="card-text">
@@ -90,9 +119,11 @@
           </p>
         </div>
         <br>
-        <a class="button is-info" href="acervo_pessoal_editar.php?id=<?php echo $row['id_publicacao']; ?>">Editar</a>
-        <a class="button is-danger"
-          href="acervo_pessoal_excluir.php?id=<?php echo $row['id_publicacao']; ?>">Excluir</a>
+        <div>
+          <a class="button is-info" href="acervo_pessoal_editar.php?id=<?php echo $row['id_publicacao']; ?>">Editar</a>
+          <a class="button is-danger"
+            href="acervo_pessoal_excluir.php?id=<?php echo $row['id_publicacao']; ?>">Excluir</a>
+        </div>
       </div>
       <?php
           }
@@ -145,7 +176,8 @@
                 <label>Escolha uma imagem: </label><br>
                 <div class="file">
                   <label class="file-label">
-                    <input class="file-input" type="file" name="imagem" required title="Por favor, insira uma imagem!">
+                    <input class="file-input" type="file" name="imagens[]" multiple="multiple" required
+                      title="Por favor, insira uma imagem!">
                     <span class="file-cta">
                       <span class="file-icon">
                         <i class="fa fa-upload"></i>
@@ -175,6 +207,9 @@
     </section>
   </main>
   <script src="./js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+  </script>
 </body>
 
 </html>
