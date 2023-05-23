@@ -1,6 +1,7 @@
 <?php
 require('./db/conn.php');
 session_start();
+$id = $_POST['id'];
 $autor = $_SESSION['user_id'];
 $nome_especie = $_POST['nome_especie'];
 $nome_cientifico = $_POST['nome_cientifico'];
@@ -43,10 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $imagensJson = !empty($imagens) ? json_encode($imagens) : null; // Convertendo as imagens para o formato JSON, se houver imagens
 
-  $sql = "UPDATE publicacao SET estado_conservacao = '$estado_conservacao', nivel_trofico = '$nivel_trofico', nome_especie='$nome_especie', nome_cientifico='$nome_cientifico'";
-  
+  // Verifica se há novas imagens para atualizar
   if (!empty($imagensJson)) {
-    $sql .= ", url_imagem='$imagensJson'"; // Adiciona a cláusula de atualização do campo url_imagem, se houver imagens
+    $sql = "UPDATE publicacao SET estado_conservacao = '$estado_conservacao', nivel_trofico = '$nivel_trofico', nome_especie='$nome_especie', nome_cientifico='$nome_cientifico', url_imagem='$imagensJson' WHERE id_publicacao='$id'";
+  } else {
+    $sql = "UPDATE publicacao SET estado_conservacao = '$estado_conservacao', nivel_trofico = '$nivel_trofico', nome_especie='$nome_especie', nome_cientifico='$nome_cientifico' WHERE id_publicacao='$id'";
   }
 
   if ($conn->query($sql) === TRUE) {
