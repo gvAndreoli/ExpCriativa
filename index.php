@@ -25,8 +25,8 @@
     </div>
     <div id="nav-container" class="navbar is-success">
       <nav>
-        <a class="navbar-item is-success js-modal-trigger" data-target="modal-js-login">Login</a>
-        <a class="navbar-item is-success js-modal-trigger" data-target="modal-js-cadastro">Cadastro</a>
+        <a class="navbar-item is-success js-modal-trigger" data-target="modal-js-login" id="login-btn">Login</a>
+        <a class="navbar-item is-success js-modal-trigger" data-target="modal-js-cadastro" id="cadastro-btn">Cadastro</a>
       </nav>
     </div>
   </header>
@@ -145,11 +145,11 @@
                 <div class="modal-background"></div>
                 <div class="modal-content">
                   <div class="notification">'.
-                  '<h4 class="title is-4">'. $_SESSION['msg-title'].'</h4>' . 
+                  '<h4 class="title is-4" id="modal-error-msg">'. $_SESSION['msg-title'].'</h4>' . 
                     $_SESSION['mensagem'] .
                   '</div>
                 </div>
-                <button class="modal-close is-large" aria-label="close"></button>
+                <button class="modal-close is-large" id="btn-fechar-modal" aria-label="close"></button>
               </div>';
     ?>
     <script>
@@ -167,7 +167,7 @@
                 <div class="modal-background"></div>
                 <div class="modal-content">
                   <div class="notification is-success">'.
-                  '<h4 class="title is-4">Usuário cadastrado com sucesso!</h4> 
+                  '<h4 class="title is-4" id="msg-sucesso-login">Usuário cadastrado com sucesso!</h4> 
                     Você já pode fazer login
                   </div>
                 </div>

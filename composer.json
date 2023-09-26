@@ -1,0 +1,12 @@
+{
+    "name": "joaop/biorecord",
+    "authors": [
+        {
+            "name": "Joao Pedro Igeski Morais",
+            "email": "joaopedroigeski@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    }
+}
